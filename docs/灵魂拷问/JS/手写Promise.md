@@ -138,12 +138,12 @@ class Promise {
   static all(promises){
     return new Promise((reslove, reject) => {
       let arr = []
-
+			let idx = 0
       const resloveResult = (index, data) => {
         arr[index] = data
         //不能用数组的长度来比较，因为给数组赋值的时候 arr[1] = 1 ==> [empty, 1]，length 是 2
         //这里用 index 作为计数器
-        if (++index === promises.length) {
+        if (++idx === promises.length) {
           return reslove(arr)
         }
       }

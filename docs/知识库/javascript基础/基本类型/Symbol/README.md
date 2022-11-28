@@ -66,7 +66,7 @@ Symbol 作为属性名，遍历对象的时候，该属性不会出现在`for...
 
 也不会被`Object.keys()`、`Object.getOwnPropertyNames()`、`JSON.stringify()`返回
 
-### Object.getOwnPropertySymbol
+### Object.getOwnPropertySymbols
 
 可以返回所有 Symbol 属性的值
 

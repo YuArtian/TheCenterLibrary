@@ -91,43 +91,39 @@ const convert = (items, id = 0, link = 'parentId') => {
 
 
 ```js
-function convert(list) {
-  const obj = {}
+const convertTree2 = (list) => {
+  const arr = Array.from(list)
   const res = []
-  list.forEach(item => {
-    obj[item.id] = item
-  })
-  list.forEach(item => {
-    if (item.parentId !== 0) {
-      obj[item.parentId]['children'] ? obj[item.parentId]['children'].push(item) : obj[item.parentId]['children'] = [item]
-    } else {
+
+  const map = arr.reduce((pre, cur) => {
+    cur.children = []
+    pre[cur.id] = cur
+    return cur
+  }, {})
+
+  arr.forEach(item => {
+    if(item.parentId === 0) {
       res.push(item)
+      return
     }
+    map[item.parentId]['children'].push(item)
   })
   return res
 }
+
+const tree = convertTree(list)
 ```
 
-
-
-
+## 树形转回数组
 
 ```js
-const convert = (items, id = 0, link = 'parentId') => {
-  const res = []
-  const map = items.reduce((total, cur) => {
-    cur.children = []
-    total[cur.id] = cur
-    return total
-  }, {}) // 定义所有数据的map
-  for (let v of items) {
-    if (v[link] === id) {
-      res.push(v)
-      continue
+const convertArr = (tree, parentId=0, res=[]) => {
+  tree.forEach(({ children, ...item }) => {
+    res.push({ parentId, ...item })
+    if(children && children.length !== 0) {
+      convertArr(children, item.id, res)
     }
-    let a = map[v[link]]
-    if (a) a.children.push(v)
-  }
+  })
   return res
 }
 ```

@@ -41,5 +41,23 @@ ES6类的底层还是通过构造函数去创建的
 - 不存在变量提升
   类不存在变量提升（hoist），这一点与 ES5 完全不同
 
+  也就是说 1. class要先定义再使用 2. 父类 必须要写在 子类前面
+  
+  eg：
+  
+  ```js
+  new Foo() //ReferenceError
+  class Foo {}
+  ```
+  
+  ```js
+  class Bar extends Foo {}//ReferenceError
+  class Foo {}
+  ```
+  
+  
+  
+  
+  
   
 
