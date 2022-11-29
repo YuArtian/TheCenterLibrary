@@ -1,4 +1,4 @@
-/*
+
 // 类装饰器
 function DecoratorA(ctor: Function) {
   console.log('ctor', ctor)
@@ -14,8 +14,6 @@ class A {
 
 
 
-//
- */
 
 //
 /* function DecoratorA(...args: any) {
