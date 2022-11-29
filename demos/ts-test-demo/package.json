@@ -1,0 +1,13 @@
+{
+  "name": "ts-test-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "clear": "rm rf ./dist/*"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.9.3"
+  }
+}
