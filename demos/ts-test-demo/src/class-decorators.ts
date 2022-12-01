@@ -1,7 +1,7 @@
 
 // 类装饰器
-function DecoratorA(ctor: Function) {
-  console.log('ctor', ctor)
+function DecoratorA(...args: any) {
+  console.log('ctor', args)
 }
 
 @DecoratorA
