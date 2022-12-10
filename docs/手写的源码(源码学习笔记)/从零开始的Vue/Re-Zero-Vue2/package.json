@@ -1,0 +1,21 @@
+{
+  "name": "re-zero-vue2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "rollup -c -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "@rollup/plugin-babel": "^6.0.3",
+    "cross-env": "^7.0.3",
+    "rollup": "^3.7.1",
+    "rollup-plugin-serve": "^2.0.2"
+  }
+}
