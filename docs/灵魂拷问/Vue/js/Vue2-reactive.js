@@ -23,10 +23,12 @@ class Observer {
 
 function defineReactive(data, key, value) {
   observer(value);
+
   Object.defineProperty(data, key, {
     get: function() {
       //依赖收集
       console.log("===依赖收集===: key", key, value);
+      //
       return value;
     },
     set: function(newValue) {
@@ -56,4 +58,8 @@ class Dep {
     this.id = _id++;
     this.subs = [];
   }
+  depend() {
+    // 收集当前 watcher
+  }
 }
+Dep.target = null;
