@@ -9,9 +9,15 @@
 </head>
 
 <body>
+  <div id="app"></div>
   <script src="../dist/index.js"></script>
   <script>
-    const vm = new Vue()
+    const vm = new Vue({
+      data: {
+        title: 'my vue'
+      },
+      el: '#app',
+    })
   </script>
 </body>
 
