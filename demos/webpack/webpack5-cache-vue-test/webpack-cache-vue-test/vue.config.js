@@ -9,4 +9,7 @@ module.exports = defineConfig({
       },
     },
   },
+  chainWebpack: (webpackConfig) => {
+    webpackConfig.devtool("source-map");
+  },
 });
