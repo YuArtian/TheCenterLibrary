@@ -29,3 +29,6 @@ TypeScript 可以和 JavaScript 共存，这意味着 JavaScript 项目能够渐
 TypeScript 增强了编辑器（IDE）的功能，提供了代码补全、接口提示、跳转到定义、代码重构等能力。
 TypeScript 拥有活跃的社区，大多数常用的第三方库都提供了类型声明。
 TypeScript 与标准同步发展，符合最新的 ECMAScript 标准（stage 3）。
+
+TypeScript 是结构类型系统，类型之间的对比只会比较它们最终的结构，而会忽略它们定义时的关系
+> https://ts.xcatliu.com/basics/type-assertion.html#%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80%E7%9A%84%E9%99%90%E5%88%B6
