@@ -5,7 +5,7 @@ Pick(挑选)：`type NewType = Pick<Type, "key1"|"key2">`
 从类型中选一个或几个
 
 ## eg
-```
+```ts
 interface Todo {
   title: string;
   description: string;
