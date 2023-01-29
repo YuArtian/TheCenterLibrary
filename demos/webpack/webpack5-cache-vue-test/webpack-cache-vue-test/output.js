@@ -1,6 +1,7 @@
 {
   mode: 'development',
   context: '/Users/zhaoxueyu/Documents/git/LearnForOffer/demos/webpack/webpack5-cache-vue-test/webpack-cache-vue-test',
+  devtool: 'source-map',
   output: {
     hashFunction: 'xxhash64',
     path: '/Users/zhaoxueyu/Documents/git/LearnForOffer/demos/webpack/webpack5-cache-vue-test/webpack-cache-vue-test/dist',
@@ -57,7 +58,7 @@
             loader: '/Users/zhaoxueyu/Documents/git/LearnForOffer/node_modules/cache-loader/dist/cjs.js',
             options: {
               cacheDirectory: '/Users/zhaoxueyu/Documents/git/LearnForOffer/demos/webpack/webpack5-cache-vue-test/webpack-cache-vue-test/node_modules/.cache/vue-loader',
-              cacheIdentifier: '1f8ccf8c'
+              cacheIdentifier: 'f4d24c8c'
             }
           },
           /* config.module.rule('vue').use('vue-loader') */
@@ -65,7 +66,7 @@
             loader: '/Users/zhaoxueyu/Documents/git/LearnForOffer/demos/webpack/webpack5-cache-vue-test/webpack-cache-vue-test/node_modules/vue-loader/dist/index.js',
             options: {
               cacheDirectory: '/Users/zhaoxueyu/Documents/git/LearnForOffer/demos/webpack/webpack5-cache-vue-test/webpack-cache-vue-test/node_modules/.cache/vue-loader',
-              cacheIdentifier: '1f8ccf8c',
+              cacheIdentifier: 'f4d24c8c',
               babelParserPlugins: [
                 'jsx',
                 'classProperties',
@@ -1149,7 +1150,7 @@
             options: {
               cacheCompression: false,
               cacheDirectory: '/Users/zhaoxueyu/Documents/git/LearnForOffer/demos/webpack/webpack5-cache-vue-test/webpack-cache-vue-test/node_modules/.cache/babel-loader',
-              cacheIdentifier: '393f1983'
+              cacheIdentifier: 'f12cb9e4'
             }
           }
         ]
@@ -1163,7 +1164,7 @@
             loader: '/Users/zhaoxueyu/Documents/git/LearnForOffer/node_modules/cache-loader/dist/cjs.js',
             options: {
               cacheDirectory: '/Users/zhaoxueyu/Documents/git/LearnForOffer/demos/webpack/webpack5-cache-vue-test/webpack-cache-vue-test/node_modules/.cache/ts-loader',
-              cacheIdentifier: '0c49c4a2'
+              cacheIdentifier: '6a998211'
             }
           },
           /* config.module.rule('ts').use('babel-loader') */
@@ -1192,7 +1193,7 @@
             loader: '/Users/zhaoxueyu/Documents/git/LearnForOffer/node_modules/cache-loader/dist/cjs.js',
             options: {
               cacheDirectory: '/Users/zhaoxueyu/Documents/git/LearnForOffer/demos/webpack/webpack5-cache-vue-test/webpack-cache-vue-test/node_modules/.cache/ts-loader',
-              cacheIdentifier: '0c49c4a2'
+              cacheIdentifier: '6a998211'
             }
           },
           /* config.module.rule('tsx').use('babel-loader') */
@@ -1348,7 +1349,7 @@
         ],
         cwd: '/Users/zhaoxueyu/Documents/git/LearnForOffer/demos/webpack/webpack5-cache-vue-test/webpack-cache-vue-test',
         cache: true,
-        cacheLocation: '/Users/zhaoxueyu/Documents/git/LearnForOffer/demos/webpack/webpack5-cache-vue-test/webpack-cache-vue-test/node_modules/.cache/eslint/a1080612.json',
+        cacheLocation: '/Users/zhaoxueyu/Documents/git/LearnForOffer/demos/webpack/webpack5-cache-vue-test/webpack-cache-vue-test/node_modules/.cache/eslint/b200aaaa.json',
         context: '/Users/zhaoxueyu/Documents/git/LearnForOffer/demos/webpack/webpack5-cache-vue-test/webpack-cache-vue-test',
         failOnWarning: false,
         failOnError: true,
@@ -1378,5 +1379,13 @@
     app: [
       './src/main.ts'
     ]
+  },
+  cache: {
+    type: 'filesystem',
+    buildDependencies: {
+      config: [
+        '/Users/zhaoxueyu/Documents/git/LearnForOffer/demos/webpack/webpack5-cache-vue-test/webpack-cache-vue-test/vue.config.js'
+      ]
+    }
   }
 }
