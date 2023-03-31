@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<div id="app"></div>
+<button id="btn">Add Age +1</button>
+
+<body>
+  <script>
+    // 手写vue3响应式原理
+    const obj = {
+      name: 'name',
+      age: 18,
+      get aliasName() {
+        console.log('who get aliasName:: ', this)
+        return 'alias' + this.name // 不使用 Reflect 的话，this.name 不会再次走到 Proxy 的 get去取 name 的值
+      }
+    }
+
+    /*
+    step-1 -实现 reactive
+    const p = reactive(obj)
+    console.log('p.name', p.name)
+    p.name = 'zhaoxueyu'
+    console.log('p.aliasName', p.aliasName)
+    */
+
+    /**
+     * step-2 -实现 Effect
+     *
+     */
+    // 当前 Effect
+    let activeEffect = null
+    /* Effect */
+    // effect
+    class ReactiveEffect {
+      constructor(fn) {
+        this.fn = fn //用户函数
+        this.active = true //是否激活
+        this.deps = [] //依赖
+      }
+      run() {
+        if (!this.active) {
+          return this.fn()
+        }
+        activeEffect = this
+        return this.fn()
+      }
+    }
+    function effect(fn) {
+      const _effect = new ReactiveEffect(fn)
+      return _effect.run()
+    }
+    //依赖收集
+    // targetMap 收集所有响应式对象的依赖
+    /**
+     * targetMap -> WeakMap{
+     *  [state]: Map{
+     *   name: Set[effect1, effect2, ...],
+     *   age: Set[effect1, effect2, ...],
+     *  }
+     * }
+    */
+    const targetMap = new WeakMap()
+    function track(target, key) {
+      if (activeEffect) {
+        // 从 targetMap 中找到传入的响应式对象
+        let depsMap = targetMap.get(target)
+        // 没有则新建一个存储
+        if (!depsMap) {
+          targetMap.set(target, (depsMap = new Map()))
+        }
+        let dep = depsMap.get(key)
+        if (!dep) {
+          depsMap.set(key, (dep = new Set()))
+        }
+        let shouldTrack = dep.has(activeEffect)
+        if (!shouldTrack) {
+          dep.add(activeEffect)
+        }
+      }
+    }
+    //触发更新
+    function trigger(target, key, value, oldValue) {
+      const depsMap = targetMap.get(target)
+      if (!depsMap) return
+      const deps = depsMap.get(key)
+      const effects = [...deps]
+      effects && effects.forEach(e => {
+        e.run()
+      })
+    }
+
+    /* vue3 核心 -- reactive (由 Proxy 实现) */
+    function reactive(target) {
+      // 只代理对象
+      if (!(target != null && typeof target === "object")) {
+        return
+      }
+      const proxy = new Proxy(target, {
+        get: function (target, key, receiver) {
+          console.log('getter key:: ', key)
+          // return target[key] 要使用 Reflect
+          const res = Reflect.get(target, key, receiver)
+          // 取值 触发依赖收集
+          track(target, key)
+          return res
+        },
+        set: function (target, key, value, receiver) {
+          console.log('setter key:: ', key)
+          // target[key] = value
+          const old = target[key]
+          const res = Reflect.set(target, key, value, receiver)
+          //设置值时 触发更新
+          if (old !== value) {
+            trigger(target, key, value, old)
+          }
+          return res
+        },
+      })
+      return proxy
+    }
+
+
+
+    const state = reactive(obj)
+    effect(() => {
+      console.log('user effect')
+      app.innerHTML = '姓名：' + state.name + '年龄：' + state.age
+    })
+    btn.addEventListener('click', function () {
+      state.age++
+    })
+  </script>
+</body>
+
+</html>
