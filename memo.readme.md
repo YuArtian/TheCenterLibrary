@@ -4,3 +4,11 @@
 
 > https://github.com/CommanderXL
 
+
+
+stared git
+
+https://github.com/yaogengzhu/uploadFile
+
+> 文件上传、form-data方式、base64方式、文件上传进度条管控、多个文件上传、大文件上传（切片上传、断点续传）
+
