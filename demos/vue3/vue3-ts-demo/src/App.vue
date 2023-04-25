@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 
 const msg = ref('You did it!')
 setTimeout(() => {
@@ -10,8 +9,11 @@ setTimeout(() => {
 </script>
 
 <template>
-  <div><RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/message">Message</RouterLink></div>
+  <div>
+    <RouterLink to="/">Home</RouterLink>
+    <RouterLink to="/message">Message</RouterLink>
+    <RouterLink to="/next-tick">nextTick</RouterLink>
+  </div>
   <RouterView />
 </template>
 
