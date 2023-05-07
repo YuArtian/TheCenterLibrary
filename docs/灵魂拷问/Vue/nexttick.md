@@ -1,4 +1,10 @@
+# Vue nextTick
 > https://github.com/answershuto/learnVue/blob/master/docs/Vue.js%E5%BC%82%E6%AD%A5%E6%9B%B4%E6%96%B0DOM%E7%AD%96%E7%95%A5%E5%8F%8AnextTick.MarkDown
+## TLDR;
+- nextTick是Vue的一个异步API，用于在DOM更新后执行回调函数
+- nextTick的原理是利用了JavaScript中的事件循环机制，将回调函数放入下一个事件循环周期中执行
+- nextTick的执行逻辑是将回调函数存储到一个队列中，等到下一个事件循环周期开始时依次执行队列中的回调函数。
+如果在回调函数中再次调用 nextTick，则添加的回调函数会在当前队列的末尾执行。
 
 
 ## nextTick原理

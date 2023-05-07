@@ -11,22 +11,37 @@ export default {
       now: 'default'
     }
   },
-  mounted() {
-    console.log('mounted -1')
+  async mounted() {
     this.now = 'mounted1'
+    console.log('mounted -1', this.$refs.test1.innerHTML)
     this.$nextTick(() => {
       console.log('nextTick-1', this.$refs.test1.innerHTML)
       this.now = 'nextTick1'
     })
+    // await this.$nextTick(() => {
     this.$nextTick(() => {
       console.log('nextTick-2', this.$refs.test1.innerHTML)
       this.now = 'nextTick2'
+      this.$nextTick(() => {
+        this.now = 'nextTick4'
+        console.log('nextTick-4', this.$refs.test1.innerHTML)
+      })
+      this.$nextTick(() => {
+        this.now = 'nextTick5'
+        console.log('nextTick-5', this.$refs.test1.innerHTML)
+      })
     })
-    console.log('mounted -2')
     this.now = 'mounted2'
+    console.log('mounted -2', this.$refs.test1.innerHTML)
     this.$nextTick(() => {
       console.log('nextTick-3', this.$refs.test1.innerHTML)
       this.now = 'nextTick3'
+      debugger
+      this.$nextTick(() => {
+        debugger
+        this.now = 'nextTick6'
+        console.log('nextTick-6', this.$refs.test1.innerHTML)
+      })
     })
   }
 }
