@@ -14,9 +14,13 @@ export default {
   async mounted() {
     this.now = 'mounted1'
     console.log('mounted -1', this.$refs.test1.innerHTML)
+
     this.$nextTick(() => {
       console.log('nextTick-1', this.$refs.test1.innerHTML)
       this.now = 'nextTick1'
+    })
+    Promise.resolve().then(() => {
+      console.log('Promise', this.$refs.test1.innerHTML)
     })
     // await this.$nextTick(() => {
     this.$nextTick(() => {
@@ -31,14 +35,13 @@ export default {
         console.log('nextTick-5', this.$refs.test1.innerHTML)
       })
     })
+
     this.now = 'mounted2'
     console.log('mounted -2', this.$refs.test1.innerHTML)
     this.$nextTick(() => {
       console.log('nextTick-3', this.$refs.test1.innerHTML)
       this.now = 'nextTick3'
-      debugger
       this.$nextTick(() => {
-        debugger
         this.now = 'nextTick6'
         console.log('nextTick-6', this.$refs.test1.innerHTML)
       })
