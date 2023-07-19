@@ -6,6 +6,7 @@
 >
 > https://jkchao.github.io/typescript-book-chinese/
 
+> https://www.typescriptlang.org/docs/handbook/intro.html
 
 
 ## 初始化项目
