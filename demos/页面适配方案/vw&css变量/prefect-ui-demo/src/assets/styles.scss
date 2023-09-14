@@ -1,0 +1,11 @@
+/**
+  * @param {Number} $value - 理想尺寸基数，不带任何单位，设计稿对应的元素尺寸值，eg 设计稿元素宽度是500，$value = 500
+  * @param {Number} $idealViewportWidth - 理想视窗宽度基数，不带单位，设计稿的宽度
+  * @param {String} $min - 最小视窗宽度 * @param {String} $max - 最大视窗宽度
+**/
+
+@function scalePixelValue ($value, $idealViewportWidth: 1600, $min: 320px, $max: 3480px) {
+  @return calc(
+    #{$value} * (clamp(#{$min}, 100vw, #{$max}) / #{$idealViewportWidth})
+  )
+}
