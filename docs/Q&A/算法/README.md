@@ -1,5 +1,7 @@
 # 基础
 
+> https://github.com/krahets/hello-algo
+
 ### 异或运算
 
 任何数异或 0 都等于它本身
